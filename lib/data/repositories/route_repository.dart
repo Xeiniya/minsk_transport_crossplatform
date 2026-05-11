@@ -74,3 +74,18 @@ class RouteRepository {
     ).toList();
   }
 }
+
+Future<List<TransportRoute>> getRoutes({String? type}) async {
+  try {
+    await Future.delayed(const Duration(milliseconds: 100));
+    var routes = _routesData.map((map) => TransportRoute.fromMap(map)).toList();
+    if (type != null && type.isNotEmpty) {
+      routes = routes.where((route) => route.type.value == type).toList();
+    }
+    return routes;
+  } catch (e, stackTrace) {
+    debugPrint('Error in getRoutes: $e');
+    debugPrint('Stack trace: $stackTrace');
+    return [];
+  }
+}

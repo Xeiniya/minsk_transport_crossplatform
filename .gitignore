@@ -151,3 +151,8 @@ test-results/
 *.appimage
 *.dmg
 *.msi
+
+# Submodule specific
+*.submodule
+.DS_Store
+Thumbs.db
