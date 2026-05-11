@@ -201,3 +201,4 @@ coverage/html/
 *.dmg
 *.msi
 EOF
+aurora/
