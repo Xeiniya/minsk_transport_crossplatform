@@ -1,0 +1,203 @@
+cat > .gitignore << 'EOF'
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+.mvn/
+*.iml
+*.iws
+.idea/
+
+# Flutter/Dart
+.dart_tool/
+.pub/
+.pub-cache/
+.pub-data/
+build/
+*.lock
+*.old
+*.tmp
+*.a
+*.dll
+*.dylib
+*.exe
+*.lib
+*.so
+*.o
+*.stamp
+*.snap
+*.tar
+*.tgz
+*.zip
+*.gz
+
+# Flutter Aurora specific
+**/aurora/build/
+**/aurora/ephemeral/
+**/aurora/.dart_tool/
+**/aurora/.flutter-plugins
+**/aurora/.flutter-plugins-dependencies
+**.aurora_pubspec.lock
+
+# Android
+*.apk
+*.aab
+*.dex
+*.kotlin_module
+android/.gradle/
+android/local.properties
+android/**/generated/
+android/app/build/
+android/captures/
+android/.cxx/
+
+# iOS
+ios/.symlinks/
+ios/Pods/
+ios/Podfile.lock
+ios/generated/
+ios/**/*.hmap
+ios/**/*.moved-aside
+ios/**/.last_build_id
+
+# Web
+build/web/
+.dockerignore
+**/*.precompiled.js
+**/*.wasm
+**/*.js.deps
+
+# Linux
+build/linux/
+linux/build/
+linux/flutter/
+linux/CMakeCache.txt
+linux/CMakeFiles/
+linux/cmake_install.cmake
+linux/Makefile
+linux/*.cbp
+linux/*.user
+linux/*.kdev4
+
+# Windows
+build/windows/
+windows/build/
+windows/flutter/
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.pdb
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.sdf
+*.opensdf
+*.suo
+*.userosscache
+*.ncb
+
+# macOS
+build/macos/
+macos/build/
+macos/Pods/
+macos/Podfile.lock
+*.dSYM
+*.dSYM.zip
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.cproject
+*.autosave
+*.sublime-project
+*.sublime-workspace
+
+# Environment
+.env
+.env.*
+local.properties
+*.key
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+
+# Coverage
+coverage/
+**/coverage/
+*.lcov
+*.gcov
+*.gcda
+*.gcno
+
+# Test reports
+test-results/
+*.junit.xml
+*.trx
+*.test_results.xml
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# JetBrains
+.idea/
+*.iml
+out/
+gen/
+.DS_Store
+
+# VS Code
+.history/
+*.code-workspace
+
+# Flutter specific
+.flutter-plugins
+.flutter-plugins-dependencies
+*.generated.dart
+*.freezed.dart
+
+# Web specific
+**/*.dart.js
+**/*.dart.js.map
+**/*.dart.precompiled.js
+build/web/assets/
+
+# Coverage specific
+coverage/lcov.info
+coverage/html/
+
+# Deployment
+*.rpm
+*.deb
+*.snap
+*.flatpak
+*.appimage
+*.dmg
+*.msi
+EOF
