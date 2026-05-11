@@ -18,10 +18,10 @@ class AppTheme {
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
     ),
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
       elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
