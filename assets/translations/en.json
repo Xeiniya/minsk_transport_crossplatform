@@ -1,0 +1,15 @@
+{
+  "app_title": "Minsk Transport",
+  "routes": "Routes",
+  "all": "All",
+  "buses": "Buses",
+  "trolleys": "Trolleys",
+  "trams": "Trams",
+  "search_routes": "Search routes",
+  "favorites": "Favorites",
+  "settings": "Settings",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "no_routes": "No routes found"
+}
