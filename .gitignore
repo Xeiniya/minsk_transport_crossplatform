@@ -9,6 +9,7 @@
 .buildlog/
 .history
 .svn/
+.mvn/
 .swiftpm/
 migrate_working_dir/
 
@@ -18,10 +19,10 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code
+.vscode/
+.history/
+*.code-workspace
 
 # Flutter/Dart/Pub related
 /pubspec.lock
@@ -35,14 +36,118 @@ migrate_working_dir/
 /build/
 /coverage/
 
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Flutter Aurora specific
 aurora/
+**/aurora/build/
+**/aurora/ephemeral/
+**/aurora/.dart_tool/
+**/aurora/.flutter-plugins
+**/aurora/.flutter-plugins-dependencies
+**.aurora_pubspec.lock
+
+# Android
+*.apk
+*.aab
+*.dex
+*.kotlin_module
+android/.gradle/
+android/local.properties
+android/**/generated/
+android/app/build/
+android/captures/
+android/.cxx/
+
+# iOS
+ios/.symlinks/
+ios/Pods/
+ios/Podfile.lock
+ios/generated/
+ios/**/*.hmap
+ios/**/*.moved-aside
+ios/**/.last_build_id
+
+# Web
+build/web/
+.dockerignore
+**/*.precompiled.js
+**/*.wasm
+**/*.js.deps
+web/*.dart.js
+web/*.dart.js.map
+web/*.dart.precompiled.js
+
+# Linux
+build/linux/
+linux/build/
+linux/flutter/
+linux/CMakeCache.txt
+linux/CMakeFiles/
+linux/cmake_install.cmake
+linux/Makefile
+
+# Windows
+build/windows/
+windows/build/
+windows/flutter/
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.pdb
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+
+# macOS
+build/macos/
+macos/build/
+macos/Pods/
+macos/Podfile.lock
+*.dSYM
+
+# Environment
+.env
+.env.*
+local.properties
+*.key
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Coverage & Test
+coverage/
+test-results/
+*.lcov
+*.gcov
+*.junit.xml
+*.trx
+
+# Temp files
+*.tmp
+*.temp
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+# Generated files
+*.generated.dart
+*.freezed.dart
+
+# Deployment
+*.rpm
+*.deb
+*.snap
+*.flatpak
+*.appimage
+*.dmg
+*.msi
