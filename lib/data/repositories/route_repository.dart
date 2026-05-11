@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import '../models/transport_route.dart';
 import '../models/route_stop.dart';
 
@@ -33,59 +34,63 @@ class RouteRepository {
   ];
   
   Future<List<TransportRoute>> getRoutes({String? type}) async {
-    await Future.delayed(const Duration(milliseconds: 100));
-    var routes = _routesData.map((map) => TransportRoute.fromMap(map)).toList();
-    if (type != null && type.isNotEmpty) {
-      routes = routes.where((route) => route.type.value == type).toList();
+    try {
+      await Future.delayed(const Duration(milliseconds: 100));
+      var routes = _routesData.map((map) => TransportRoute.fromMap(map)).toList();
+      if (type != null && type.isNotEmpty) {
+        routes = routes.where((route) => route.type.value == type).toList();
+      }
+      return routes;
+    } catch (e, stackTrace) {
+      debugPrint('Error in getRoutes: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return [];
     }
-    return routes;
   }
   
   Future<TransportRoute?> getRouteById(int id) async {
-    await Future.delayed(const Duration(milliseconds: 50));
     try {
+      await Future.delayed(const Duration(milliseconds: 50));
       final routeData = _routesData.firstWhere((route) => route['id'] == id);
       return TransportRoute.fromMap(routeData);
-    } catch (e) {
+    } catch (e, stackTrace) {
+      debugPrint('Error in getRouteById: $e');
+      debugPrint('Stack trace: $stackTrace');
       return null;
     }
   }
   
   Future<List<RouteStop>> getStopsForRoute(int routeId) async {
-    await Future.delayed(const Duration(milliseconds: 50));
-    final stops = _stopsData
-        .where((stop) => stop['route_id'] == routeId)
-        .map((stop) => RouteStop.fromMap(stop))
-        .toList();
-    return stops;
+    try {
+      await Future.delayed(const Duration(milliseconds: 50));
+      final stops = _stopsData
+          .where((stop) => stop['route_id'] == routeId)
+          .map((stop) => RouteStop.fromMap(stop))
+          .toList();
+      return stops;
+    } catch (e, stackTrace) {
+      debugPrint('Error in getStopsForRoute: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return [];
+    }
   }
   
-  // Добавленный метод searchRoutes
   Future<List<TransportRoute>> searchRoutes(String query) async {
-    final routes = await getRoutes();
-    if (query.isEmpty) return routes;
-    
-    final lowerQuery = query.toLowerCase();
-    return routes.where((route) =>
-      route.routeNumber.toLowerCase().contains(lowerQuery) ||
-      route.routeName.toLowerCase().contains(lowerQuery) ||
-      route.startStop.toLowerCase().contains(lowerQuery) ||
-      route.endStop.toLowerCase().contains(lowerQuery)
-    ).toList();
-  }
-}
-
-Future<List<TransportRoute>> getRoutes({String? type}) async {
-  try {
-    await Future.delayed(const Duration(milliseconds: 100));
-    var routes = _routesData.map((map) => TransportRoute.fromMap(map)).toList();
-    if (type != null && type.isNotEmpty) {
-      routes = routes.where((route) => route.type.value == type).toList();
+    try {
+      final routes = await getRoutes();
+      if (query.isEmpty) return routes;
+      
+      final lowerQuery = query.toLowerCase();
+      return routes.where((route) =>
+        route.routeNumber.toLowerCase().contains(lowerQuery) ||
+        route.routeName.toLowerCase().contains(lowerQuery) ||
+        route.startStop.toLowerCase().contains(lowerQuery) ||
+        route.endStop.toLowerCase().contains(lowerQuery)
+      ).toList();
+    } catch (e, stackTrace) {
+      debugPrint('Error in searchRoutes: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return [];
     }
-    return routes;
-  } catch (e, stackTrace) {
-    debugPrint('Error in getRoutes: $e');
-    debugPrint('Stack trace: $stackTrace');
-    return [];
   }
 }
