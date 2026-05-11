@@ -8,11 +8,9 @@ on:
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: '3.16.0'
+  FLUTTER_VERSION: 'stable'  # Изменено с 3.16.0 на stable
 
 jobs:
-  # ==================== ТЕСТИРОВАНИЕ ====================
-  
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
@@ -52,8 +50,6 @@ jobs:
       - run: flutter pub get
       - run: flutter test integration_test/ --reporter expanded || echo "No integration tests"
 
-  # ==================== СБОРКА ДЛЯ ВСЕХ ПЛАТФОРМ ====================
-
   build-web:
     name: Build Web
     runs-on: ubuntu-latest
@@ -66,12 +62,7 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: flutter create --platforms=web . || true
-      - run: flutter build web --release --web-renderer canvaskit
-      - uses: actions/upload-artifact@v4
-        with:
-          name: web-build
-          path: build/web/
+      - run: flutter build web --release
 
   build-android:
     name: Build Android APK
@@ -85,7 +76,6 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: flutter create --platforms=android . || true
       - run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
@@ -107,66 +97,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
       - run: flutter pub get
-      - run: flutter create --platforms=linux . || true
       - run: flutter build linux --release
       - uses: actions/upload-artifact@v4
         with:
           name: linux-build
           path: build/linux/x64/release/bundle/
-
-  build-windows:
-    name: Build Windows
-    runs-on: windows-latest
-    needs: [unit-tests, widget-tests]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-      - run: flutter pub get
-      - run: flutter create --platforms=windows . || true
-      - run: flutter build windows --release
-      - uses: actions/upload-artifact@v4
-        with:
-          name: windows-build
-          path: build/windows/x64/runner/Release/
-
-  build-macos:
-    name: Build macOS
-    runs-on: macos-latest
-    needs: [unit-tests, widget-tests]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-      - run: flutter pub get
-      - run: flutter create --platforms=macos . || true
-      - run: flutter build macos --release
-      - uses: actions/upload-artifact@v4
-        with:
-          name: macos-build
-          path: build/macos/Build/Products/Release/
-
-  build-ios:
-    name: Build iOS
-    runs-on: macos-latest
-    needs: [unit-tests, widget-tests]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-      - run: flutter pub get
-      - run: flutter create --platforms=ios . || true
-      - run: flutter build ios --release --no-codesign
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ios-build
-          path: build/ios/iphoneos/
