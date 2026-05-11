@@ -1,26 +1,22 @@
-cmake_minimum_required(VERSION 3.13)
-project(runner LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.10)
 
-# Define the application target. To change its name, change BINARY_NAME in the
-# top-level CMakeLists.txt, not the value here, or `flutter run` will no longer
-# work.
-#
-# Any new source files that you add to the application should be added here.
+set(BINARY_NAME "minsk_transport")
+
 add_executable(${BINARY_NAME}
-  "main.cc"
-  "my_application.cc"
-  "${FLUTTER_MANAGED_DIR}/generated_plugin_registrant.cc"
+  main.cc
+  my_application.cc
 )
 
-# Apply the standard set of build settings. This can be removed for applications
-# that need different build settings.
-apply_standard_settings(${BINARY_NAME})
+target_link_libraries(${BINARY_NAME} PRIVATE
+  ${FLUTTER_LIBRARY}
+  ${GTK_LIBRARIES}
+)
 
-# Add preprocessor definitions for the application ID.
-add_definitions(-DAPPLICATION_ID="${APPLICATION_ID}")
+target_include_directories(${BINARY_NAME} PRIVATE
+  ${FLUTTER_INCLUDE_DIR}
+)
 
-# Add dependency libraries. Add any application-specific dependencies here.
-target_link_libraries(${BINARY_NAME} PRIVATE flutter)
-target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
-
-target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
+# Install
+install(TARGETS ${BINARY_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES ${FLUTTER_LIBRARY} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY ${FLUTTER_ASSETS_DIR} DESTINATION ${CMAKE_INSTALL_DATADIR}/${APPLICATION_ID})
