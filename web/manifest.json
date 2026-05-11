@@ -1,0 +1,8 @@
+{
+  "name": "Minsk Transport",
+  "short_name": "MinskTransport",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2196F3",
+  "background_color": "#ffffff"
+}
