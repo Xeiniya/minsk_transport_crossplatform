@@ -18,12 +18,6 @@ class AppTheme {
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
     ),
-    cardTheme: const CardTheme(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
-      ),
-    ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -56,13 +50,6 @@ class AppTheme {
       elevation: 0,
       backgroundColor: Colors.grey[850],
       foregroundColor: Colors.white,
-    ),
-    cardTheme: CardTheme(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      color: Colors.grey[800],
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
