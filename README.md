@@ -1,4 +1,4 @@
-# minsk_transport_crossplatform
+# MinskTransportCrossplatform
 
 Кроссплатформенное приложение на Flutter — транспортный справочник Минска с поддержкой Android, iOS, Linux и Web.
 
